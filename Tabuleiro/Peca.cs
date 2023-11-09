@@ -15,5 +15,6 @@ namespace XadrezUDM.tabuleiro
             this.qtdMovimentos = 0;
         }
 
+
     }
 }
