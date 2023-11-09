@@ -1,4 +1,4 @@
-﻿namespace XadrezUDM.Tabuleiro
+﻿namespace XadrezUDM.tabuleiro
 {
     public class Posicao
     {
