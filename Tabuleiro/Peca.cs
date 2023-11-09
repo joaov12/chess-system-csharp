@@ -15,6 +15,10 @@ namespace XadrezUDM.tabuleiro
             this.qtdMovimentos = 0;
         }
 
+        public void incremetarQtdMovimentos()
+        {
+            qtdMovimentos++;
+        }
 
     }
 }
