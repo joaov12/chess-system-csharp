@@ -1,6 +1,6 @@
 namespace XadrezUDM.tabuleiro
 {
-    class Peca
+    abstract class Peca
     {
         public Posicao? posicao { get; set; }
         public Cor cor { get; protected set; }
@@ -20,5 +20,6 @@ namespace XadrezUDM.tabuleiro
             qtdMovimentos++;
         }
 
+        public abstract bool[,] movimentosPossiveis();
     }
 }
