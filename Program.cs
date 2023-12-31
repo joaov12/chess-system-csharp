@@ -20,8 +20,6 @@ namespace XadrezUDM
                         Console.Clear();
                         Tela.imprimirPartida(partida);
 
-
-
                         Console.WriteLine("\n");
                         Console.Write("Origem: ");
                         Posicao origem = Tela.lerPosicaoXadrez().toPosicao();

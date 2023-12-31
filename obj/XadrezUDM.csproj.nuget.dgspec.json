@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\João Vitor\\source\\repos\\XadrezUDM\\XadrezUDM.csproj": {}
+    "C:\\Users\\João Vitor\\Source\\Repos\\chess-system-csharp\\XadrezUDM.csproj": {}
   },
   "projects": {
-    "C:\\Users\\João Vitor\\source\\repos\\XadrezUDM\\XadrezUDM.csproj": {
+    "C:\\Users\\João Vitor\\Source\\Repos\\chess-system-csharp\\XadrezUDM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\João Vitor\\source\\repos\\XadrezUDM\\XadrezUDM.csproj",
+        "projectUniqueName": "C:\\Users\\João Vitor\\Source\\Repos\\chess-system-csharp\\XadrezUDM.csproj",
         "projectName": "XadrezUDM",
-        "projectPath": "C:\\Users\\João Vitor\\source\\repos\\XadrezUDM\\XadrezUDM.csproj",
+        "projectPath": "C:\\Users\\João Vitor\\Source\\Repos\\chess-system-csharp\\XadrezUDM.csproj",
         "packagesPath": "C:\\Users\\João Vitor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\João Vitor\\source\\repos\\XadrezUDM\\obj\\",
+        "outputPath": "C:\\Users\\João Vitor\\Source\\Repos\\chess-system-csharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\João Vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

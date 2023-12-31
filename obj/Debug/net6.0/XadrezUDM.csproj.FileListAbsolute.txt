@@ -12,3 +12,11 @@ C:\Users\João Vitor\source\repos\XadrezUDM\obj\Debug\net6.0\refint\XadrezUDM.dl
 C:\Users\João Vitor\source\repos\XadrezUDM\obj\Debug\net6.0\XadrezUDM.pdb
 C:\Users\João Vitor\source\repos\XadrezUDM\obj\Debug\net6.0\XadrezUDM.genruntimeconfig.cache
 C:\Users\João Vitor\source\repos\XadrezUDM\obj\Debug\net6.0\ref\XadrezUDM.dll
+C:\Users\João Vitor\source\repos\chess-system-csharp\obj\Debug\net6.0\XadrezUDM.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\João Vitor\source\repos\chess-system-csharp\obj\Debug\net6.0\XadrezUDM.AssemblyInfoInputs.cache
+C:\Users\João Vitor\source\repos\chess-system-csharp\obj\Debug\net6.0\XadrezUDM.AssemblyInfo.cs
+C:\Users\João Vitor\source\repos\chess-system-csharp\obj\Debug\net6.0\XadrezUDM.csproj.CoreCompileInputs.cache
+C:\Users\João Vitor\source\repos\chess-system-csharp\obj\Debug\net6.0\XadrezUDM.sourcelink.json
+C:\Users\João Vitor\source\repos\chess-system-csharp\obj\Debug\net6.0\XadrezUDM.dll
+C:\Users\João Vitor\source\repos\chess-system-csharp\obj\Debug\net6.0\refint\XadrezUDM.dll
+C:\Users\João Vitor\source\repos\chess-system-csharp\obj\Debug\net6.0\XadrezUDM.pdb
