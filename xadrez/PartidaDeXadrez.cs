@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using xadrez;
-using XadrezUDM.tabuleiro;
+﻿using System.Collections.Generic;
+using tabuleiro;
 
-namespace XadrezUDM.xadrez
+namespace xadrez
 {
     class PartidaDeXadrez
     {
+
         public Tabuleiro tab { get; private set; }
         public int turno { get; private set; }
         public Cor jogadorAtual { get; private set; }
@@ -17,12 +13,11 @@ namespace XadrezUDM.xadrez
         private HashSet<Peca> pecas;
         private HashSet<Peca> capturadas;
         public bool xeque { get; private set; }
-        private Peca vulneravelEnPassant;
-
+        public Peca vulneravelEnPassant { get; private set; }
 
         public PartidaDeXadrez()
         {
-            tab = new Tabuleiro(8,8);
+            tab = new Tabuleiro(8, 8);
             turno = 1;
             jogadorAtual = Cor.Branca;
             terminada = false;
@@ -32,14 +27,14 @@ namespace XadrezUDM.xadrez
             capturadas = new HashSet<Peca>();
             colocarPecas();
         }
-           
+
         public Peca executaMovimento(Posicao origem, Posicao destino)
         {
             Peca p = tab.retirarPeca(origem);
-            p.incremetarQtdMovimentos();
+            p.incrementarQteMovimentos();
             Peca pecaCapturada = tab.retirarPeca(destino);
-            tab.colocarPeca(p ,destino);
-            if(pecaCapturada != null)
+            tab.colocarPeca(p, destino);
+            if (pecaCapturada != null)
             {
                 capturadas.Add(pecaCapturada);
             }
@@ -84,20 +79,18 @@ namespace XadrezUDM.xadrez
             }
 
             return pecaCapturada;
-
         }
 
         public void desfazMovimento(Posicao origem, Posicao destino, Peca pecaCapturada)
         {
             Peca p = tab.retirarPeca(destino);
-            p.decrementarQtdMovimentos();
+            p.decrementarQteMovimentos();
             if (pecaCapturada != null)
             {
                 tab.colocarPeca(pecaCapturada, destino);
                 capturadas.Remove(pecaCapturada);
             }
             tab.colocarPeca(p, origem);
-
 
             // #jogadaespecial roque pequeno
             if (p is Rei && destino.coluna == origem.coluna + 2)
@@ -142,10 +135,26 @@ namespace XadrezUDM.xadrez
         public void realizaJogada(Posicao origem, Posicao destino)
         {
             Peca pecaCapturada = executaMovimento(origem, destino);
+
             if (estaEmXeque(jogadorAtual))
             {
                 desfazMovimento(origem, destino, pecaCapturada);
                 throw new TabuleiroException("Você não pode se colocar em xeque!");
+            }
+
+            Peca p = tab.peca(destino);
+
+            // #jogadaespecial promocao
+            if (p is Peao)
+            {
+                if ((p.cor == Cor.Branca && destino.linha == 0) || (p.cor == Cor.Preta && destino.linha == 7))
+                {
+                    p = tab.retirarPeca(destino);
+                    pecas.Remove(p);
+                    Peca dama = new Dama(tab, p.cor);
+                    tab.colocarPeca(dama, destino);
+                    pecas.Add(dama);
+                }
             }
 
             if (estaEmXeque(adversaria(jogadorAtual)))
@@ -167,7 +176,6 @@ namespace XadrezUDM.xadrez
                 mudaJogador();
             }
 
-
             // #jogadaespecial en passant
             if (p is Peao && (destino.linha == origem.linha - 2 || destino.linha == origem.linha + 2))
             {
@@ -182,17 +190,17 @@ namespace XadrezUDM.xadrez
 
         public void validarPosicaoDeOrigem(Posicao pos)
         {
-            if(tab.peca(pos) == null)
+            if (tab.peca(pos) == null)
             {
-                throw new TabuleiroException("Não existe peça na posição escolhida!");
+                throw new TabuleiroException("Não existe peça na posição de origem escolhida!");
             }
-            if(jogadorAtual != tab.peca(pos).cor)
+            if (jogadorAtual != tab.peca(pos).cor)
             {
-                throw new TabuleiroException("A peça escolhida não é sua!");
+                throw new TabuleiroException("A peça de origem escolhida não é sua!");
             }
             if (!tab.peca(pos).existeMovimentosPossiveis())
             {
-                throw new TabuleiroException("Não existe movimentos possiveis para essa peça!");
+                throw new TabuleiroException("Não há movimentos possíveis para a peça de origem escolhida!");
             }
         }
 
@@ -206,7 +214,7 @@ namespace XadrezUDM.xadrez
 
         private void mudaJogador()
         {
-            if(jogadorAtual == Cor.Branca)
+            if (jogadorAtual == Cor.Branca)
             {
                 jogadorAtual = Cor.Preta;
             }
@@ -243,10 +251,9 @@ namespace XadrezUDM.xadrez
             return aux;
         }
 
-
         private Cor adversaria(Cor cor)
         {
-            if(cor == Cor.Branca)
+            if (cor == Cor.Branca)
             {
                 return Cor.Preta;
             }
@@ -317,8 +324,6 @@ namespace XadrezUDM.xadrez
             return true;
         }
 
-
-
         public void colocarNovaPeca(char coluna, int linha, Peca peca)
         {
             tab.colocarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
@@ -361,6 +366,5 @@ namespace XadrezUDM.xadrez
             colocarNovaPeca('g', 7, new Peao(tab, Cor.Preta, this));
             colocarNovaPeca('h', 7, new Peao(tab, Cor.Preta, this));
         }
-
     }
 }
